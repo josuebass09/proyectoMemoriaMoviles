@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">ProyectoMoviles</string>
+
+    <string name="btnInciarJuego">Iniciar Juego</string>
+    <string name="btnDificultad">Dificultad</string>
+    <string name="btnTemas">Temas</string>
+    <string name="btnTiempos">Mejores Tiempos</string>
+    <string name="btnSalir">Salir</string>
+
+
+    <string name="textoDificultad">Seleccione Dificultad</string>
+    <string name="radioFacil">Facil</string>
+    <string name="radioMedio">Medio</string>
+    <string name="radioDificil">Dificil</string>
+    <string name="radioImposible">Imposible</string>
+    <string name="btnAceptar">Aceptar</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="btnAtras">Atras</string>
+
+    <string name="btnComenzarMemoria">Comenzar</string>
+    <string name="textoTema">Seleccione un tema</string>
+    <string name="radioAnimales">Animales</string>
+    <string name="radioPersonas">Personas</string>
+    <string name="radioPaises">Paises</string>
+    <string name="radioFrutas">Frutas</string>
+    <string name="textoTiempos">Mejores Tiempos</string>
+    <string name="jugador1">alsotoo</string>
+    <string name="jugador2">josue</string>
+    <string name="jugador3">johel</string>
+    <string name="tiempoFacil">2.56</string>
+    <string name="tiempoMedio">1.20</string>
+    <string name="tiempoDificil">0.20</string>
+    <string name="encabezadoTiemposRes">Tiempo Restante</string>
+    <string name="encabezadoDificultad">Dificultad</string>
+    <string name="encabezadoJugador">Jugador</string>
+    <string name="encabezadoCronometro">0</string>
+    <string name="title_activity_dificultad">DificultadActivity</string>
+    <string name="title_iniciarjuego_activity">IniciarJuegoActivity</string>
+    <string name="title_activity_temas">TemasActivity</string>
+    <string name="MejoresTiempos">Mejores Tiempos</string>
+    <string name="Dificultad">Dificultad</string>
+    <string name="tituloMemoria">Juego de Memoria</string>
+    <string name="title_activity_puntuaciones">PuntuacionesActivity</string>
+
+
+</resources>

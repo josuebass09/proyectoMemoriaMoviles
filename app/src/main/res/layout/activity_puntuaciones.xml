@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nebula"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.06"
+        android:text="@string/MejoresTiempos"
+        android:textColor="@color/blanco"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_margin="25dp"
+        />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="358dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_shape"
+            >
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="25dp"
+                android:text="@string/encabezadoTiemposRes"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="25dp"
+                android:text="@string/Dificultad"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_shape"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="20dp"
+                android:text="@string/tiempoFacil"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="20dp"
+                android:text="Facil"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_shape"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="20dp"
+                android:text="@string/tiempoMedio"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="20dp"
+                android:text="Medio"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/cell_shape"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="20dp"
+                android:text="@string/tiempoDificil"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="20dp"
+                android:text="Dificil"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+
+
+        </TableRow>
+
+
+
+
+
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/regresarPuntuaciones"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btnAtras" />
+
+</LinearLayout>

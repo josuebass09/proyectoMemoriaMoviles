@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nebula"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/txtViewTemas"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+
+        android:text="@string/textoDificultad"
+        android:textColor="@color/blanco" />
+    <RadioGroup
+        android:id="@+id/radioGroupTema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewTemas"
+        android:layout_centerHorizontal="true">
+        <RadioButton
+            android:id="@+id/radioAnimales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtViewTemas"
+            android:layout_alignStart="@+id/txtViewTemas"
+            android:layout_below="@+id/txtViewTemas"
+            android:layout_marginTop="77dp"
+            android:text="@string/radioAnimales"
+            android:textColor="@color/blanco"
+            />
+
+        <RadioButton
+            android:id="@+id/radioMedioTema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioPaises"
+            android:layout_alignStart="@+id/radioPaises"
+            android:layout_below="@+id/radioAnimales"
+            android:layout_marginTop="53dp"
+            android:text="@string/radioPersonas"
+            android:textColor="@color/blanco" />
+
+        <RadioButton
+            android:id="@+id/radioPaises"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioAnimales"
+            android:layout_alignStart="@+id/radioAnimales"
+            android:layout_below="@+id/radioMedioTema"
+            android:layout_marginTop="53dp"
+            android:text="@string/radioPaises"
+            android:textColor="@color/blanco"
+            />
+
+        <RadioButton
+            android:id="@+id/radioFrutas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioPaises"
+            android:layout_alignStart="@+id/radioPaises"
+            android:layout_below="@+id/radioPaises"
+
+            android:layout_marginTop="43dp"
+            android:text="@string/radioFrutas"
+            android:textColor="@color/blanco" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnAceptarTema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="47dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/btnAceptar" />
+
+    <Button
+        android:id="@+id/btnAtrasTema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/btnAceptarTema"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:text="@string/btnAtras" />
+</RelativeLayout>
