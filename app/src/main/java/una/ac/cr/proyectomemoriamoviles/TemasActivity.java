@@ -48,11 +48,11 @@ public class TemasActivity extends AppCompatActivity {
         Toast.makeText(this,"El tema elegido es: " + obtenerDatos, Toast.LENGTH_SHORT).show();
 
         //
-        if(obtenerDatos==2131624100){
+        if(obtenerDatos==animales.getId()){
             animales.setChecked(true);
-        } else if(obtenerDatos==2131624101){
+        } else if(obtenerDatos==personajes.getId()){
             personajes.setChecked(true);
-        }else if(obtenerDatos==2131624102) {
+        }else if(obtenerDatos==paises.getId()) {
             paises.setChecked(true);
         }else{
             frutas.setChecked(true);

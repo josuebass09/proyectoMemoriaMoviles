@@ -27,7 +27,7 @@
         android:layout_marginBottom="42dp">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioFacil"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignLeft="@+id/txtViewDificultad"
@@ -38,24 +38,23 @@
             android:textColor="@color/blanco" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioMedio"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_alignLeft="@+id/radioButton"
-            android:layout_alignStart="@+id/radioButton"
-            android:layout_below="@+id/radioButton"
+            android:layout_alignLeft="@+id/radioFacil"
+            android:layout_alignStart="@+id/radioFacil"
+            android:layout_below="@+id/radioFacil"
             android:layout_marginTop="52dp"
-            android:checked="true"
             android:text="@string/radioMedio"
             android:textColor="@color/blanco" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioDificil"
             android:layout_width="103dp"
             android:layout_height="70dp"
-            android:layout_alignLeft="@+id/radioButton2"
-            android:layout_alignStart="@+id/radioButton2"
-            android:layout_below="@+id/radioButton2"
+            android:layout_alignLeft="@+id/radioMedio"
+            android:layout_alignStart="@+id/radioMedio"
+            android:layout_below="@+id/radioMedio"
             android:layout_marginTop="51dp"
             android:text="@string/radioDificil"
             android:textColor="@color/blanco" />

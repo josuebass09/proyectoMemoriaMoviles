@@ -133,7 +133,22 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
         comienzo = (Button) findViewById(R.id.comienzo);
         cronometro=(TextView)findViewById(R.id.cronometro);
         barraProgreso=(ProgressBar)findViewById(R.id.barraProgreso);
-        regresiva=60;
+
+        int idDificultad = DificultadActivity.obtenerOpcionesD(this);
+
+        if(idDificultad == R.id.radioFacil)
+        {
+            regresiva = 100;
+        }
+        else if(idDificultad == R.id.radioMedio)
+        {
+            regresiva = 80;
+        }
+        else
+        {
+            regresiva = 60;
+        }
+
         barraProgreso.setMax(regresiva);
         contadorAscendente=0;
         contadorDescendente=20;
@@ -185,18 +200,20 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
         int idTema = TemasActivity.obtenerOpciones(this);
 
-        if(idTema==2131558560){
+        if(idTema==R.id.radioAnimales)
+        {
             tipoTema = "Animales";
-        } else if(idTema==2131558561){
+        }
+        else if(idTema==R.id.radioMedioTema)
+        {
             tipoTema = "Personas";
         }
-        else if(idTema==2131558562)
+        else if(idTema==R.id.radioPaises)
         {
             tipoTema="Paises";
         }
-        else if(idTema==2131558563)
+        else
         {
-
             tipoTema="Frutas";
         }
 
@@ -1181,6 +1198,8 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
         }
 
         alerta.setMessage("Jugar de nuevo?");
+
+        alerta.setCancelable(false);
 
         alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override

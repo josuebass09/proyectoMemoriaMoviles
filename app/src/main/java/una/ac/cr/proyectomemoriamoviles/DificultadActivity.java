@@ -1,7 +1,9 @@
 package una.ac.cr.proyectomemoriamoviles;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class DificultadActivity extends AppCompatActivity {
     private Button btnAtras;
@@ -17,6 +20,10 @@ public class DificultadActivity extends AppCompatActivity {
     private RadioButton radioButton;
     private RadioGroup radioGroup;
     private MediaPlayer sonidoToqueMenu;
+    private RadioButton facil;
+    private RadioButton medio;
+    private RadioButton dificil;
+
 
 
 
@@ -30,7 +37,23 @@ public class DificultadActivity extends AppCompatActivity {
         radioGroup=(RadioGroup)findViewById(R.id.radioGroupDificultad);
 
         sonidoToqueMenu= MediaPlayer.create(this,R.raw.sonidotoquemenu);
-        sonidoToqueMenu.setAudioStreamType(AudioManager.STREAM_MUSIC);;
+        sonidoToqueMenu.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+
+        facil = (RadioButton)findViewById(R.id.radioFacil);
+        medio = (RadioButton)findViewById(R.id.radioMedio);
+        dificil = (RadioButton)findViewById(R.id.radioDificil);
+
+        final int obtenerDificultad = obtenerOpcionesD(this);
+        Toast.makeText(this,"La dificultad es: " + obtenerDificultad, Toast.LENGTH_SHORT).show();
+
+        if(obtenerDificultad==facil.getId()){
+            facil.setChecked(true);
+        }else if(obtenerDificultad==medio.getId()){
+            medio.setChecked(true);
+        }else{
+            dificil.setChecked(true);
+        }
 
 
 
@@ -42,24 +65,30 @@ public class DificultadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                int radioSeleccionado=radioGroup.getCheckedRadioButtonId();
-                radioButton=(RadioButton)findViewById(radioSeleccionado);
+                int radioNSeleccionado=radioGroup.getCheckedRadioButtonId();
+                radioButton=(RadioButton)findViewById(radioNSeleccionado);
 
 
                 switch(radioButton.getText().toString())
                 {
                     case "Facil":
                         enviarNivel("Facil");
+                        Toast.makeText(getApplicationContext(),"Facil",Toast.LENGTH_SHORT).show();
+                        guardarNivelSeleccionado(radioNSeleccionado);
 
                         break;
 
                     case "Medio":
                         enviarNivel("Medio");
+                        Toast.makeText(getApplicationContext(),"Medio",Toast.LENGTH_SHORT).show();
+                        guardarNivelSeleccionado(radioNSeleccionado);
 
                         break;
 
                     case "Dificil":
                         enviarNivel("Dificil");
+                        Toast.makeText(getApplicationContext(),"Dificil",Toast.LENGTH_SHORT).show();
+                        guardarNivelSeleccionado(radioNSeleccionado);
 
                         break;
 
@@ -93,7 +122,18 @@ public class DificultadActivity extends AppCompatActivity {
     }
 
 
+    private void guardarNivelSeleccionado(int radioNSeleccionado) {
 
+        SharedPreferences prefD = this.getSharedPreferences("AppPrefD",MODE_PRIVATE);
+        SharedPreferences.Editor editorD = prefD.edit();
+        editorD.putInt("Seleccionada",radioNSeleccionado);
+        editorD.apply();
+    }
+
+    static public int obtenerOpcionesD(Context context){
+        SharedPreferences prefD = context.getSharedPreferences("AppPrefD",MODE_PRIVATE);
+        return prefD.getInt("Seleccionada",0);
+    }
 
 
     public void irAMainActivity()
