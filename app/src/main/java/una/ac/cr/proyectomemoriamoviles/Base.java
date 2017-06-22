@@ -646,9 +646,11 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
             public void onFinish()
             {
+                boolean nuevoRecord=false;
+                boolean gano=false;
                 if(regresiva<=1)
                 {
-                    preguntaJuego(false);
+                    preguntaJuego(nuevoRecord,gano);
                 }
                 else
                 {
@@ -699,6 +701,8 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
                                 if(regresiva > tiempos[0])
                                 {
                                     PDB.modificarPuntuacion(1, "Facil",regresiva);
+                                    nuevoRecord=true;
+
                                 }
 
 
@@ -708,6 +712,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
                                 if(regresiva > tiempos[1])
                                 {
                                     PDB.modificarPuntuacion(2, "Medio",regresiva);
+                                    nuevoRecord=true;
 
                                 }
 
@@ -719,6 +724,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
                                 if(regresiva > tiempos[2])
                                 {
                                     PDB.modificarPuntuacion(3, "Dificil",regresiva);
+                                    nuevoRecord=true;
                                 }
 
 
@@ -745,8 +751,8 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
                         Log.d(""+ids[i], dics[i] + ", " + timps[i]);
 
                     }
-
-                    preguntaJuego(true);
+                    gano=true;
+                    preguntaJuego(nuevoRecord,gano);
 
                 }
 
@@ -1312,18 +1318,25 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
 
 
-    public void preguntaJuego(boolean nuevoRecord)
+    public void preguntaJuego(boolean nuevoRecord,boolean gano)
     {
         AlertDialog.Builder alerta=new AlertDialog.Builder(this);
 
 
         if(nuevoRecord)
         {
-            alerta.setTitle("Nuevo record!!");
+            alerta.setTitle("Excelente!!, Nuevo record!!");
         }
         else
         {
-            alerta.setTitle("Perdió");
+            if(!gano)
+            {
+                alerta.setTitle("Has perdido!");
+            }
+            else
+            {
+                alerta.setTitle("Ganastes!!");
+            }
         }
 
         alerta.setMessage("Jugar de nuevo?");
