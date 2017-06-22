@@ -1,6 +1,7 @@
 package una.ac.cr.proyectomemoriamoviles;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,18 +11,24 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
 
 /**
  * Created by josue on 19/06/17.
@@ -85,8 +92,9 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
     private ProgressBar barraProgreso;
     private boolean nuevoRecord;
 
-
-
+    private int segundosC;
+    private int reiniciarS;
+    private char dificultad;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -139,14 +147,25 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
         if(idDificultad == R.id.radioFacil)
         {
             regresiva = 100;
+            segundosC = 100000;
+            reiniciarS = 100;
+            dificultad='f';
+
+
         }
         else if(idDificultad == R.id.radioMedio)
         {
             regresiva = 80;
+            segundosC = 80000;
+            reiniciarS = 80;
+            dificultad='m';
         }
         else
         {
             regresiva = 60;
+            segundosC = 60000;
+            reiniciarS = 60;
+            dificultad='d';
         }
 
         barraProgreso.setMax(regresiva);
@@ -216,6 +235,8 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
         {
             tipoTema="Frutas";
         }
+
+
 
 
 
@@ -591,7 +612,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
 
 
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(segundosC, 1000) {
 
 
             public void onTick(long millisUntilFinished) {
@@ -631,10 +652,118 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
                 }
                 else
                 {
+                    PuntuacionesBDHelper PDB = new PuntuacionesBDHelper(getApplicationContext());
+
+                    // Escribimos 4 registros en nuestra tabla
+
+
+                    //estos metodos son para setear los puntajes y hacer poder probar los nuevos recods
+                    //PDB.modificarPuntuacion(2, "Medio",15);
+                    //PDB.modificarPuntuacion(2, "Medio",15);
+                    //PDB.modificarPuntuacion(3, "Dificil",1);
+
+
+                    // Solo se necesita insertar la primera vez, si la base esta vacia
+                      switch(dificultad)
+                      {
+                          case 'f':
+                              PDB.insertarPuntuacion(1, "Facil",  regresiva);
+                              break;
+                          case 'm':
+                              PDB.insertarPuntuacion(2, "Medio",  regresiva);
+                              break;
+                          case 'd':
+                              PDB.insertarPuntuacion(3, "Dificil",regresiva);
+                              break;
+
+
+
+
+                      }
+
+                   //trae los tiempos de cada dificultad y los guarda en un vector
+                    int tiempos[]=new int[3];
+
+                    for(int i=0;i<tiempos.length;i++)
+                    {
+                        tiempos[i]=PDB.recuperarPuntuacion(i+1).getTiempo();
+
+                    }
+
+
+                         //Evalua los tiempos anteriores guardados en la base con el nuevo y verifica si hay nuevo record
+                    //el switch es para validar las diferentes dificultades que hay
+                        switch (dificultad)
+                        {
+                            case 'f':
+                                if(regresiva > tiempos[0])
+                                {
+                                    PDB.modificarPuntuacion(1, "Facil",regresiva);
+                                }
+
+
+                                break;
+                            case 'm':
+
+                                if(regresiva > tiempos[1])
+                                {
+                                    PDB.modificarPuntuacion(2, "Medio",regresiva);
+
+                                }
+
+
+
+
+                                break;
+                            case 'd':
+                                if(regresiva > tiempos[2])
+                                {
+                                    PDB.modificarPuntuacion(3, "Dificil",regresiva);
+                                }
+
+
+
+                        }
+
+
+
+
+
+
+                        // Recuperamos los 4 registros y los mostramos en el log por consola
+
+                        Log.d("TOTAL", Integer.toString(PDB.recuperarPuntuaciones().size()));
+
+                    int[] ids = new int[PDB.recuperarPuntuaciones().size()];
+                    String[] dics = new String[PDB.recuperarPuntuaciones().size()];
+                    int[] timps = new int[PDB.recuperarPuntuaciones().size()];
+                    for (int i = 0; i < PDB.recuperarPuntuaciones().size(); i++) {
+                        ids[i] = PDB.recuperarPuntuaciones().get(i).getId();
+                        dics[i] = PDB.recuperarPuntuaciones().get(i).getDificultad();
+                        timps[i] = PDB.recuperarPuntuaciones().get(i).getTiempo();
+
+                        Log.d(""+ids[i], dics[i] + ", " + timps[i]);
+
+                    }
+
                     preguntaJuego(true);
+
                 }
 
+   /*  Otros metodos
 
+   // Modificamos el registro 3
+        PDB.modificarPuntuacion(3, "PPPPP", 121212121, "zzzz@xxxx.es");
+
+        // Recuperamos el 3 registro dato por dato y lo mostramos en el log
+
+        int id = PDB.recuperarCONTACTO(3).getId();
+        String nombre = PDB.recuperarPuntuacion(3).getDificultad();
+        int telefono = PDB.recuperarPuntuacion(3).getTiempo();
+        Log.d(""+id, dificultad + ", " + tiempo );
+
+        // Para borrar el registro 3
+        PDB.borrarPuntuacion(3); */
 
 
 
@@ -653,7 +782,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
     public void reestablecerValoresCronometro()
     {
-        regresiva=60;
+        regresiva=reiniciarS;
         cronometro.setTextColor(Color.WHITE);
         cronometro.setText("0");
         seAcabo=false;

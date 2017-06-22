@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSalir;
 
     private MediaPlayer sonidoToqueMenu;
-    private Vector<String> datosConfiguracion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
