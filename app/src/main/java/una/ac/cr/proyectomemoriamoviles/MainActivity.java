@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         sonidoToqueMenu.start();
         Intent intent=new Intent(this,DificultadActivity.class);
         startActivity(intent);
+        finish();
 
     }
 
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         sonidoToqueMenu.start();
         Intent intent=new Intent(this,TemasActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void irAPuntuacionesActivity()
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         sonidoToqueMenu.start();
         Intent intent=new Intent(this,PuntuacionesActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void irIniciarJuegoActivity(){
@@ -113,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         sonidoToqueMenu.start();
         Intent intent=new Intent(this,Base.class);
         startActivity(intent);
+
     }
 
     public void salir()

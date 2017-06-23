@@ -728,45 +728,11 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
                         }
 
-
-
-
-
-
-                        // Recuperamos los 4 registros y los mostramos en el log por consola
-
-                        Log.d("TOTAL", Integer.toString(PDB.recuperarPuntuaciones().size()));
-
-                    int[] ids = new int[PDB.recuperarPuntuaciones().size()];
-                    String[] dics = new String[PDB.recuperarPuntuaciones().size()];
-                    int[] timps = new int[PDB.recuperarPuntuaciones().size()];
-                    for (int i = 0; i < PDB.recuperarPuntuaciones().size(); i++) {
-                        ids[i] = PDB.recuperarPuntuaciones().get(i).getId();
-                        dics[i] = PDB.recuperarPuntuaciones().get(i).getDificultad();
-                        timps[i] = PDB.recuperarPuntuaciones().get(i).getTiempo();
-
-                        Log.d(""+ids[i], dics[i] + ", " + timps[i]);
-
-                    }
-                    gano=true;
-                    preguntaJuego(nuevoRecord,gano);
+                                  gano=true;
+                                  preguntaJuego(nuevoRecord,gano);
 
                 }
 
-   /*  Otros metodos
-
-   // Modificamos el registro 3
-        PDB.modificarPuntuacion(3, "PPPPP", 121212121, "zzzz@xxxx.es");
-
-        // Recuperamos el 3 registro dato por dato y lo mostramos en el log
-
-        int id = PDB.recuperarCONTACTO(3).getId();
-        String nombre = PDB.recuperarPuntuacion(3).getDificultad();
-        int telefono = PDB.recuperarPuntuacion(3).getTiempo();
-        Log.d(""+id, dificultad + ", " + tiempo );
-
-        // Para borrar el registro 3
-        PDB.borrarPuntuacion(3); */
 
 
 

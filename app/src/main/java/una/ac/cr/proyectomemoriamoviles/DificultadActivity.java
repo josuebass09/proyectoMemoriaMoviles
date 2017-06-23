@@ -45,7 +45,7 @@ public class DificultadActivity extends AppCompatActivity {
         dificil = (RadioButton)findViewById(R.id.radioDificil);
 
         final int obtenerDificultad = obtenerOpcionesD(this);
-        Toast.makeText(this,"La dificultad es: " + obtenerDificultad, Toast.LENGTH_SHORT).show();
+
 
         if(obtenerDificultad==facil.getId()){
             facil.setChecked(true);
@@ -73,21 +73,21 @@ public class DificultadActivity extends AppCompatActivity {
                 {
                     case "Facil":
                         enviarNivel("Facil");
-                        Toast.makeText(getApplicationContext(),"Facil",Toast.LENGTH_SHORT).show();
+
                         guardarNivelSeleccionado(radioNSeleccionado);
 
                         break;
 
                     case "Medio":
                         enviarNivel("Medio");
-                        Toast.makeText(getApplicationContext(),"Medio",Toast.LENGTH_SHORT).show();
+
                         guardarNivelSeleccionado(radioNSeleccionado);
 
                         break;
 
                     case "Dificil":
                         enviarNivel("Dificil");
-                        Toast.makeText(getApplicationContext(),"Dificil",Toast.LENGTH_SHORT).show();
+
                         guardarNivelSeleccionado(radioNSeleccionado);
 
                         break;
@@ -141,6 +141,7 @@ public class DificultadActivity extends AppCompatActivity {
 
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
+        finish();
 
 
 
@@ -156,6 +157,7 @@ public class DificultadActivity extends AppCompatActivity {
         Intent intent = new Intent(DificultadActivity.this, MainActivity.class);
         intent.putExtra("nivel",nivel);
         startActivity(intent);
+        finish();
 
 
     }

@@ -45,7 +45,7 @@ public class TemasActivity extends AppCompatActivity {
         sonidoToqueMenu.setAudioStreamType(AudioManager.STREAM_MUSIC);;
 
         final int obtenerDatos = obtenerOpciones(this);
-        Toast.makeText(this,"El tema elegido es: " + obtenerDatos, Toast.LENGTH_SHORT).show();
+
 
         //
         if(obtenerDatos==animales.getId()){
@@ -79,27 +79,27 @@ public class TemasActivity extends AppCompatActivity {
                     case "Animales":
                         enviarTipoTema("Animales");
 
-                        Toast.makeText(getApplicationContext(),"Animales",Toast.LENGTH_SHORT).show();
+
                         guardarOpcionSeleccionada(radioSeleccionado);
                         break;
 
                     case "Personas":
                         enviarTipoTema("Personas");
 
-                        Toast.makeText(getApplicationContext(),"Personas",Toast.LENGTH_SHORT).show();
+
                         guardarOpcionSeleccionada(radioSeleccionado);
                         break;
 
                     case "Paises":
                         enviarTipoTema("Paises");
 
-                        Toast.makeText(getApplicationContext(),"Paises",Toast.LENGTH_SHORT).show();
+
                         guardarOpcionSeleccionada(radioSeleccionado);
                         break;
 
                     case "Frutas":
                         enviarTipoTema("Frutas");
-                        Toast.makeText(getApplicationContext(),"Frutas",Toast.LENGTH_SHORT).show();
+
                         guardarOpcionSeleccionada(radioSeleccionado);
                         break;
 
@@ -138,6 +138,7 @@ public class TemasActivity extends AppCompatActivity {
 
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
+        finish();
 
     }
 
@@ -146,6 +147,7 @@ public class TemasActivity extends AppCompatActivity {
         Intent intent = new Intent(TemasActivity.this, MainActivity.class);
         intent.putExtra("tipoTema",tipoTema);
         startActivity(intent);
+        finish();
 
 
     }
