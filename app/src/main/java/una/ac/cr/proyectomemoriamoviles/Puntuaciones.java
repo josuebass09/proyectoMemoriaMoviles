@@ -15,6 +15,13 @@ public class Puntuaciones {
         this.tiempo = tiempo;
     }
 
+    public Puntuaciones()
+    {
+        this.id=0;
+        this.dificultad="";
+        this.tiempo=0;
+    }
+
     public int getId() {
         return id;
     }

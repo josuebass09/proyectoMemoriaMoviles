@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class PuntuacionesActivity extends AppCompatActivity {
 
     private Button regresarPuntuaciones;
-    private Button btnOk;
+
     private MediaPlayer sonidoToqueMenu;
     private TextView textFacil;
     private TextView textMedio;
@@ -67,13 +67,22 @@ public class PuntuacionesActivity extends AppCompatActivity {
 
     public void verificaDatosBD()
     {
-        PuntuacionesBDHelper PDB = new PuntuacionesBDHelper(getApplicationContext());
-        int tiempoFacil = PDB.recuperarPuntuacion(1).getTiempo();
-        int tiempoMedio=PDB.recuperarPuntuacion(2).getTiempo();
-        int tiempoDificil=PDB.recuperarPuntuacion(3).getTiempo();
-        textFacil.setText(String.valueOf(tiempoFacil));
-        textMedio.setText(String.valueOf(tiempoMedio));
-        textDificil.setText(String.valueOf(tiempoDificil));
+        try
+        {
+            PuntuacionesBDHelper PDB = new PuntuacionesBDHelper(getApplicationContext());
+            int tiempoFacil = PDB.recuperarPuntuacion(1);
+            int tiempoMedio = PDB.recuperarPuntuacion(2);
+            int tiempoDificil = PDB.recuperarPuntuacion(3);
+            textFacil.setText(String.valueOf(tiempoFacil));
+            textMedio.setText(String.valueOf(tiempoMedio));
+            textDificil.setText(String.valueOf(tiempoDificil));
+        }
+        catch(Exception e)
+        {
+            textFacil.setText("----------");
+            textMedio.setText("----------");
+            textDificil.setText("----------");
+        }
 
     }
 

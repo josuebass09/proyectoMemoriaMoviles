@@ -25,6 +25,8 @@ public class PuntuacionesBDHelper extends SQLiteOpenHelper {
 
 
 
+
+
     public PuntuacionesBDHelper(Context context) {
         super(context, Nombre_BaseDatos, null, Version_BaseDatos);
     }
@@ -72,17 +74,32 @@ public class PuntuacionesBDHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Puntuaciones recuperarPuntuacion(int id) {
+    public int recuperarPuntuacion(int id) {
         SQLiteDatabase db = getReadableDatabase();
         String[] valores_recuperar = {"_id", "dificultad", "tiempo"};
-        Cursor c = db.query("puntuaciones", valores_recuperar, "_id=" + id, null, null, null, null, null);
+        Puntuaciones puntuaciones;
+
+         Cursor c = db.query("puntuaciones", valores_recuperar, "_id=" + id, null, null, null, null, null);
+
         if(c != null) {
-            c.moveToFirst();
+
+
+                c.moveToFirst();
+                puntuaciones = new Puntuaciones(c.getInt(0), c.getString(1), c.getInt(2));
+                int tiempo = puntuaciones.getTiempo();
+                db.close();
+                c.close();
+
+                return tiempo;
+
+
         }
-        Puntuaciones puntuaciones = new Puntuaciones(c.getInt(0), c.getString(1), c.getInt(2));
-        db.close();
-        c.close();
-        return puntuaciones;
+
+
+
+        return 0;
+
+
     }
 
 

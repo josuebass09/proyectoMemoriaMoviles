@@ -35,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
         sonidoToqueMenu.setAudioStreamType(AudioManager.STREAM_MUSIC);;
 
 
-
-
-
-
-
         //Listener de los botones del menu
 
         //boton de dificultad

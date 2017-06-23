@@ -35,6 +35,7 @@
             android:layout_below="@+id/txtViewDificultad"
             android:layout_marginTop="75dp"
             android:text="@string/radioFacil"
+            android:checked="true"
             android:textColor="@color/blanco" />
 
         <RadioButton

@@ -51,7 +51,7 @@ public class DificultadActivity extends AppCompatActivity {
             facil.setChecked(true);
         }else if(obtenerDificultad==medio.getId()){
             medio.setChecked(true);
-        }else{
+        }else if(obtenerDificultad==dificil.getId()){
             dificil.setChecked(true);
         }
 

@@ -94,7 +94,8 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
     private int segundosC;
     private int reiniciarS;
-    private char dificultad;
+    private String tipoDificultad;
+    private PuntuacionesBDHelper PDB;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -141,15 +142,24 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
         comienzo = (Button) findViewById(R.id.comienzo);
         cronometro=(TextView)findViewById(R.id.cronometro);
         barraProgreso=(ProgressBar)findViewById(R.id.barraProgreso);
-
+        PDB= new PuntuacionesBDHelper(getApplicationContext());
+        PDB.insertarPuntuacion(1, "Facil",  0);
+        PDB.insertarPuntuacion(2, "Medio",  0);
+        PDB.insertarPuntuacion(3, "Dificil",  0);
         int idDificultad = DificultadActivity.obtenerOpcionesD(this);
 
-        if(idDificultad == R.id.radioFacil)
+        if(idDificultad == R.id.radioFacil || idDificultad==0)
         {
             regresiva = 100;
             segundosC = 100000;
             reiniciarS = 100;
-            dificultad='f';
+            tipoDificultad="Facil";
+
+
+
+
+
+
 
 
         }
@@ -158,15 +168,26 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
             regresiva = 80;
             segundosC = 80000;
             reiniciarS = 80;
-            dificultad='m';
+            tipoDificultad="Medio";
+
+
+
+
         }
-        else
+        else if(idDificultad==R.id.radioDificil)
         {
+
             regresiva = 60;
             segundosC = 60000;
             reiniciarS = 60;
-            dificultad='d';
+            tipoDificultad="Dificil";
+
+
+
         }
+
+
+
 
         barraProgreso.setMax(regresiva);
         contadorAscendente=0;
@@ -654,50 +675,26 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
                 }
                 else
                 {
-                    PuntuacionesBDHelper PDB = new PuntuacionesBDHelper(getApplicationContext());
-
-                    // Escribimos 4 registros en nuestra tabla
-
-
-                    //estos metodos son para setear los puntajes y hacer poder probar los nuevos recods
-                    //PDB.modificarPuntuacion(2, "Medio",15);
-                    //PDB.modificarPuntuacion(2, "Medio",15);
-                    //PDB.modificarPuntuacion(3, "Dificil",1);
-
-
-                    // Solo se necesita insertar la primera vez, si la base esta vacia
-                      switch(dificultad)
-                      {
-                          case 'f':
-                              PDB.insertarPuntuacion(1, "Facil",  regresiva);
-                              break;
-                          case 'm':
-                              PDB.insertarPuntuacion(2, "Medio",  regresiva);
-                              break;
-                          case 'd':
-                              PDB.insertarPuntuacion(3, "Dificil",regresiva);
-                              break;
-
-
-
-
-                      }
 
                    //trae los tiempos de cada dificultad y los guarda en un vector
                     int tiempos[]=new int[3];
 
                     for(int i=0;i<tiempos.length;i++)
                     {
-                        tiempos[i]=PDB.recuperarPuntuacion(i+1).getTiempo();
+
+                            tiempos[i]=PDB.recuperarPuntuacion(i+1);
+
+
+
+
 
                     }
 
-
                          //Evalua los tiempos anteriores guardados en la base con el nuevo y verifica si hay nuevo record
                     //el switch es para validar las diferentes dificultades que hay
-                        switch (dificultad)
+                        switch (tipoDificultad)
                         {
-                            case 'f':
+                            case "Facil":
                                 if(regresiva > tiempos[0])
                                 {
                                     PDB.modificarPuntuacion(1, "Facil",regresiva);
@@ -707,7 +704,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
 
                                 break;
-                            case 'm':
+                            case "Medio":
 
                                 if(regresiva > tiempos[1])
                                 {
@@ -720,7 +717,7 @@ public class Base extends AppCompatActivity implements View.OnClickListener {
 
 
                                 break;
-                            case 'd':
+                            case "Dificil":
                                 if(regresiva > tiempos[2])
                                 {
                                     PDB.modificarPuntuacion(3, "Dificil",regresiva);
